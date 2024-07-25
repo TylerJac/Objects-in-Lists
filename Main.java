@@ -12,8 +12,14 @@ public class Main {
             }
             System.out.println("Is it a dog? (Yes or no)");
             String isDog = scanner.nextLine();
-            boolean isDogBoolean = isDog.equalsIgnoreCase("Yes");
-            animals.add(new Animal(animalName, isDogBoolean));
+           if( isDog.equalsIgnoreCase("Yes")) {
+               boolean isDogBoolean = true;
+               animals.add(new Animal(animalName, isDogBoolean));
+           } else if( isDog.equalsIgnoreCase("No")) {
+               animals.add(new Animal(animalName));
+           } else {
+               System.out.println("Invalid input. Please enter either 'Yes' or 'No'.");
+           }
         }
         for (Animal animal: animals) {
             System.out.println("Name: " + animal.getName());
@@ -28,11 +34,14 @@ public class Main {
                 break;
             }
             System.out.print("Enter the number of episodes: ");
-            int numberOfSeasons = scanner.nextInt();
+            int numberOfEpisodes = scanner.nextInt();
             scanner.nextLine();
-            System.out.print("Enter the genre: ");
+            System.out.print("Enter the genre (leaving blank will make it unknown): ");
             String genre = scanner.nextLine();
-            showList.add(new TvShow(showTitle, numberOfSeasons, genre));
+            if (genre.isEmpty()) {
+                showList.add(new TvShow(showTitle, numberOfEpisodes));
+            }
+            showList.add(new TvShow(showTitle, numberOfEpisodes, genre));
         }
         for (TvShow show: showList) {
             System.out.println("title: " + show.getTitle() + " episodes: " + show.getEpisodeCount() + " genre: "
@@ -46,12 +55,16 @@ public class Main {
             if (bookTitle.isEmpty()) {
                 break;
             }
-            System.out.print("Enter number of pages: ");
+            System.out.print("Enter number of pages (For default put 0): ");
             int pageNum = scanner.nextInt();
             System.out.print("Enter the publication year: ");
             int publicationYear = scanner.nextInt();
             scanner.nextLine();
-            books.add(new Book(bookTitle, pageNum, publicationYear));
+            if (pageNum == 0) {
+                books.add(new Book(bookTitle, publicationYear));
+            } else {
+                books.add(new Book(bookTitle, pageNum, publicationYear));
+            }
         }
         System.out.print("Do you want to see just the book titles, the page numbers," +
                 " the publication year, or everything (name, pages, publication): ");

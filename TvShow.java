@@ -3,6 +3,11 @@ public class TvShow {
     private final int episodeCount;
     private final String genre;
 
+    public TvShow(String title, int episodeCount) {
+        this.title = title;
+        this.episodeCount = episodeCount;
+        this.genre = "Unknown";
+    }
     public TvShow(String title, int episodeCount, String genre) {
         this.title = title;
         this.episodeCount = episodeCount;

@@ -3,6 +3,12 @@ public class Book {
     private final int pageNumber;
     private final int publicationYear;
 
+    public Book(String title, int publicationYear) {
+        this.title = title;
+        this.pageNumber = 100;
+        this.publicationYear = publicationYear;
+    }
+
     public Book(String title, int pageNumber, int publicationYear) {
         this.title = title;
         this.pageNumber = pageNumber;
